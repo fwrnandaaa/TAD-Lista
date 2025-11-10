@@ -87,36 +87,72 @@ public class TadListaArray {
             throw new TAdListaExcecao("Elemento não encontrado.");
         }
         Object[] aux = new Object[size + 1];
-        for(int i = 0; i < indice; i++) {
+        for (int i = 0; i < indice; i++) {
             aux[i] = TadListaArray[i];
         }
         aux[indice] = O;
         for (int i = indice; i < size; i++) {
-            aux[i+1] = TadListaArray[i];
+            aux[i + 1] = TadListaArray[i];
         }
         size++;
         TadListaArray = aux;
     }
-    public void verLista(){
-        for(int i=0; i<size;i++){
-            System.out.println(TadListaArray[i]+" ");
+
+    public void verLista() {
+        for (int i = 0; i < size; i++) {
+            System.out.println(TadListaArray[i] + " ");
         }
-        
+
     }
-    public void insertFirst(Object O){
-        if(size==0){
-            TadListaArray[0]=O;
-            size++;
+
+    public void insertAfter(Object n, Object O) {
+        if (size == 0) {
+            throw new TAdListaExcecao("Lista vazia.");
         }
-        else{
-            Object[] aux = new Object[size + 1];
-            aux[0]=O;
-            for(int i = 0; i<size; i++){
-                aux[i+1] = TadListaArray[i];
+        int indice = -1;
+        for (int i = 0; i < size; i++) {
+            if (TadListaArray[i].equals(n)) {
+                indice = i + 1;
+                break;
             }
-           
-            TadListaArray=aux;
+        }
+        if (indice == -1) {
+            throw new TAdListaExcecao("Elemento não encontrado.");
+        }
+        Object[] aux = new Object[size + 1];
+        for (int i = 0; i < indice; i++) {
+            aux[i] = TadListaArray[i];
+        }
+        aux[indice] = O;
+        for (int i = indice; i < size; i++) {
+            aux[i] = TadListaArray[i];
+        }
+        TadListaArray = aux;
+        size++;
+
+    }
+
+    public void insertFirst(Object O) {
+        if (size == 0) {
+            TadListaArray[0] = O;
+            size++;
+        } else {
+            Object[] aux = new Object[size + 1];
+            aux[0] = O;
+            for (int i = 0; i < size; i++) {
+                aux[i + 1] = TadListaArray[i];
+            }
+
+            TadListaArray = aux;
             size++;
         }
+    }
+
+    public void insertLast(Object O) {
+        TadListaArray[size - 1] = O;
+        size++;
+    }
+    public void swapElements(Object n, Object O){
+        
     }
 }
