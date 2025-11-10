@@ -95,18 +95,19 @@ public class TadListaLL {
             current = current.next;
         }
     }
-    public void insertBefore(Object N, Object O){
+    public void insertBeforeLL(Object N, Object O){
         Node novo = new Node(O);
         if(size==0){
             throw new TadListaLLExcecao("A lista está vazia.");
         }
-        Node current = head;
+        Node current = head.next;
         while(current.value != null){
              if(current.value.equals(N)){
                 novo.prev = current.prev;
                 novo.next = current;
                 current.prev.next = novo;
                 size++;
+                break;
             }
             else{
                 current=current.next;
