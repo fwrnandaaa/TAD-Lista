@@ -101,16 +101,12 @@ public class TadListaArray {
             insertFirst(O);
             return;
         }
-        Object[] aux = new Object[TadListaArray.length];
-        for (int i = 0; i < indice; i++) {
-            aux[i] = TadListaArray[i];
+
+        for (int i = size; i > indice; i--) {
+            TadListaArray[i] = TadListaArray[i - 1];
         }
-        aux[indice] = O;
-        for (int i = indice; i < size; i++) {
-            aux[i + 1] = TadListaArray[i];
-        }
+        TadListaArray[indice] = O;
         size++;
-        TadListaArray = aux;
     }
 
     public void verLista() {
@@ -128,22 +124,17 @@ public class TadListaArray {
         int indice = -1;
         for (int i = 0; i < size; i++) {
             if (TadListaArray[i].equals(n)) {
-                indice = i+1;
+                indice = i + 1;
                 break;
             }
         }
-        if(indice == -1){
+        if (indice == -1) {
             throw new TAdListaExcecao("Objeto não encontrado.");
         }
-        Object[] aux = new Object[TadListaArray.length];
-        for (int i = 0; i < indice; i++) {
-            aux[i] = TadListaArray[i];
+        for (int i = size; i > indice + 1; i--) {
+            TadListaArray[i] = TadListaArray[i - 1];
         }
-        aux[indice] = O;
-        for(int i = indice; i<size; i++){
-            aux[i+1]=TadListaArray[i];
-        }
-        TadListaArray=aux;
+        TadListaArray[indice + 1] = O;
         size++;
     }
 
@@ -172,42 +163,42 @@ public class TadListaArray {
 
     public void swapElements(Object n, Object O) {
         int indice1 = -1;
-        int indice2=-1;
-        if(size==0){
+        int indice2 = -1;
+        if (size == 0) {
             throw new TAdListaExcecao("A lista está vazia");
         }
-        for(int i=0; i<size; i++){
-            if(TadListaArray[i].equals(O) && indice1 == -1){
-                indice1=i;
+        for (int i = 0; i < size; i++) {
+            if (TadListaArray[i].equals(O) && indice1 == -1) {
+                indice1 = i;
 
             }
-             if(TadListaArray[i].equals(n) && indice2 == -1){
-                indice2=i;
+            if (TadListaArray[i].equals(n) && indice2 == -1) {
+                indice2 = i;
             }
         }
-        if(indice1 ==-1 || indice2 == -1){
+        if (indice1 == -1 || indice2 == -1) {
             throw new TAdListaExcecao("Um dos objetos informados não existe na lista.");
-        }
-        else{
+        } else {
             Object aux = TadListaArray[indice1];
             TadListaArray[indice1] = TadListaArray[indice2];
             TadListaArray[indice2] = aux;
         }
     }
-    public void replaceElement(Object n, Object O){
-        if(size==0){
+
+    public void replaceElement(Object n, Object O) {
+        if (size == 0) {
             throw new TAdListaExcecao("A lista está vazia");
         }
         int indice = -1;
-        for(int i = 0; i<size; i++){
-            if(TadListaArray[i].equals(n)){
+        for (int i = 0; i < size; i++) {
+            if (TadListaArray[i].equals(n)) {
                 indice = i;
                 break;
             }
         }
-        if(indice==-1){
+        if (indice == -1) {
             throw new TAdListaExcecao("O objeto informado não existe na lista.");
         }
-        TadListaArray[indice]=O;
+        TadListaArray[indice] = O;
     }
 }
