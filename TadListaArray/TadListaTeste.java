@@ -20,7 +20,7 @@ public class TadListaTeste {
         v.insertLast(20);
         System.out.println("Tamanho: "+v.size());
         v.verLista();
-        v.swapElements(9, 21);
+
     
 
     }
