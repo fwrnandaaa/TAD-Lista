@@ -100,7 +100,7 @@ public class TadListaArray {
 
     public void verLista() {
         for (int i = 0; i < size; i++) {
-            System.out.println(TadListaArray[i] + " ");
+            System.out.println("Tamanho: "+i+"Object: "+TadListaArray[i] + " ");
         }
 
     }
@@ -153,6 +153,15 @@ public class TadListaArray {
         size++;
     }
     public void swapElements(Object n, Object O){
-        
+        if(size==0){
+            throw new TAdListaExcecao("A lista está vazia");
+        }
+        for(int i =0; i<size;i++){
+            if(TadListaArray[i].equals(n)){
+                TadListaArray[i]=O;
+                
+            }
+        }
+        throw new TAdListaExcecao("Elemento não encontrado.");
     }
 }
