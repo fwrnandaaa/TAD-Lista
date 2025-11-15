@@ -14,8 +14,10 @@ public class TadListaTeste {
         System.out.println("10 é o ultimo elemento? " + v.isLast(10));
         v.insertBefore(9, 8);
         v.verLista();;
-
-    
+        v.swapElements(10, 8);
+        v.verLista();
+        v.replaceElement(10, 30);
+        v.verLista();
 
     }
 }

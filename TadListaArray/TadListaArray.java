@@ -165,12 +165,49 @@ public class TadListaArray {
 
     public void insertLast(Object O) {
         aumenta_capacidade();
-        TadListaArray[size - 1] = O;
+        TadListaArray[size] = O;
         size++;
 
     }
 
     public void swapElements(Object n, Object O) {
-        
+        int indice1 = -1;
+        int indice2=-1;
+        if(size==0){
+            throw new TAdListaExcecao("A lista está vazia");
+        }
+        for(int i=0; i<size; i++){
+            if(TadListaArray[i].equals(O) && indice1 == -1){
+                indice1=i;
+
+            }
+             if(TadListaArray[i].equals(n) && indice2 == -1){
+                indice2=i;
+            }
+        }
+        if(indice1 ==-1 || indice2 == -1){
+            throw new TAdListaExcecao("Um dos objetos informados não existe na lista.");
+        }
+        else{
+            Object aux = TadListaArray[indice1];
+            TadListaArray[indice1] = TadListaArray[indice2];
+            TadListaArray[indice2] = aux;
+        }
+    }
+    public void replaceElement(Object n, Object O){
+        if(size==0){
+            throw new TAdListaExcecao("A lista está vazia");
+        }
+        int indice = -1;
+        for(int i = 0; i<size; i++){
+            if(TadListaArray[i].equals(n)){
+                indice = i;
+                break;
+            }
+        }
+        if(indice==-1){
+            throw new TAdListaExcecao("O objeto informado não existe na lista.");
+        }
+        TadListaArray[indice]=O;
     }
 }
