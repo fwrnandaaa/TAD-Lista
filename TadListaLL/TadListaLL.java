@@ -71,71 +71,47 @@ public class TadListaLL {
         size++;
     }
 
-    public void verListaLL(){
-        for(int i =0 ; i<size;i++){
-           Node current = head.next;
+    public void verListaLL() {
+        Node current = head.next;
+        for (int i = 0; i < size; i++) {
             System.out.println(current.value);
-            current=current.next;
+            current = current.next;
+        }
     }
+
+    public Object first() {
+        if (size == 0) {
+            throw new TadListaLLExcecao("A lista está vazia.");
+        }
+        return head.next.value;
+    }
+
+    public Object last() {
+        if (size == 0) {
+            throw new TadListaLLExcecao("A lista está vazia.");
+        }
+        return tail.prev.value;
+    }
+
+    public void insertBeforeLL(Node N, Node O) {
+        if(size==0){
+            throw new TadListaLLExcecao("A lista está vazia");
+        }
+        O.prev = N.prev;
+        O.next = N;
+        N.prev.next = O;
+        N.prev =O;
+        size++;
+    }
+    public void insertAfterLL(Node N, Node O){
+        if(size==0){
+            throw new TadListaLLExcecao("A lista está vazia");
+        }
+        O.prev = N;
+        O.next = N.next;
+        N.next.prev = O;
+        N.next = O;
+        size++;
+    }
+
 }
-}
-/*
- * 
- * public Object first() {
- * if (size == 0) {
- * throw new TadListaLLExcecao("A lista está vazia.");
- * }
- * return head.next.value;
- * }
- * 
- * public Object last() {
- * if (size == 0) {
- * throw new TadListaLLExcecao("A lista está vazia.");
- * }
- * return tail.prev.value;
- * }
- * 
- * public void insertFirst(Object O) {
- * Node current = new Node(O);
- * if (size == 0) {
- * current.prev = head;
- * current.next = tail;
- * head.next = current;
- * tail.prev = current;
- * size++;
- * } else {
- * current.next = head.next;
- * head.next.prev = current;
- * head.next = current;
- * current.prev = head;
- * size++;
- * }
- * }
- * 
- * public void verListaLL() {
- * Node current = head.next;
- * for (int i = 0; i < size; i++) {
- * System.err.println(current.value + " ");
- * current = current.next;
- * }
- * }
- * public void insertBeforeLL(Object N, Object O){
- * Node novo = new Node(O);
- * if(size==0){
- * throw new TadListaLLExcecao("A lista está vazia.");
- * }
- * Node current = head.next;
- * while(current.value != null){
- * if(current.value.equals(N)){
- * novo.prev = current.prev;
- * novo.next = current;
- * current.prev.next = novo;
- * size++;
- * break;
- * }
- * else{
- * current=current.next;
- * }
- * }
- * }
- */
